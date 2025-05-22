@@ -33,7 +33,9 @@ const router = createRouter({
 
 // Track page views with Pendo
 router.afterEach((to) => {
-  window.pendo.track(`Page View: ${to.name}`)
+  if (window.pendo && window.pendo.track) {
+    window.pendo.track(`Page View: ${to.name}`)
+  }
 })
 
 export default router 
