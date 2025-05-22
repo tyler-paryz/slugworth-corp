@@ -1,0 +1,24 @@
+{
+  "name": "slugworth-corp",
+  "version": "1.0.0",
+  "description": "Slugworth Corp Testing Application",
+  "type": "module",
+  "scripts": {
+    "dev": "npx vite",
+    "build": "npx vite build",
+    "preview": "npx vite preview"
+  },
+  "keywords": [
+    "slugworth",
+    "pendo",
+    "testing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@vitejs/plugin-vue": "^4.6.2",
+    "vite": "^4.3.9",
+    "vue": "^3.5.14",
+    "vue-router": "^4.5.1"
+  }
+}
