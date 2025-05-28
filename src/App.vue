@@ -13,6 +13,7 @@
             <li><router-link to="/about">About</router-link></li>
             <li><router-link to="/products">Products</router-link></li>
             <li><router-link to="/contact">Contact</router-link></li>
+            <li><router-link to="/ecosystem">Ecosystem</router-link></li>
           </ul>
         </div>
       </nav>
@@ -24,13 +25,37 @@
       <div class="container">
         <p>&copy; {{ new Date().getFullYear() }} Slugworth Corporation - All Rights Reserved</p>
         <p>A testing application for Pendo analytics</p>
+        
+        <div class="ecosystem-links">
+          <h3>Slugworth Ecosystem</h3>
+          <div class="ecosystem-buttons">
+            <a href="https://slugworth-corp.vercel.app/" class="ecosystem-btn current" @click="trackEcosystemLink('Slugworth Corp')">
+              Slugworth Corp
+            </a>
+            <a href="https://oompa-social.vercel.app/login" class="ecosystem-btn" @click="trackEcosystemLink('Oompa Social')">
+              Oompa Social
+            </a>
+            <a href="https://golden-ticket-booking.vercel.app/" class="ecosystem-btn" @click="trackEcosystemLink('Golden Ticket Booking')">
+              Golden Ticket Booking
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   </div>
 </template>
 
 <script setup>
-// No additional setup required for this component
+// Track ecosystem link clicks
+const trackEcosystemLink = (appName) => {
+  if (window.pendo && window.pendo.track) {
+    window.pendo.track('Ecosystem Navigation', {
+      fromApp: 'Slugworth Corp',
+      toApp: appName,
+      timestamp: new Date().toISOString()
+    });
+  }
+};
 </script>
 
 <style>
@@ -87,5 +112,63 @@ footer {
   color: white;
   padding: 20px 0;
   text-align: center;
+}
+
+.ecosystem-links {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ecosystem-links h3 {
+  color: var(--accent-color);
+  margin-bottom: 15px;
+}
+
+.ecosystem-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ecosystem-btn {
+  padding: 8px 16px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 4px;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.ecosystem-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--dark-color);
+  transform: translateY(-3px);
+}
+
+.ecosystem-btn.current {
+  background-color: var(--primary-color);
+  position: relative;
+}
+
+.ecosystem-btn.current::after {
+  content: '•';
+  position: absolute;
+  top: -8px;
+  right: -3px;
+  color: var(--accent-color);
+  font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+  .ecosystem-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .ecosystem-btn {
+    width: 80%;
+  }
 }
 </style> 
