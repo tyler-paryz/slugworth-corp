@@ -7,9 +7,6 @@ import './assets/main.css'
 if (window.pendo) {
   // Initialize Pendo without providing a visitor ID to allow for anonymous tracking
   window.pendo.initialize({
-    visitor: {
-      // Let Pendo generate the anonymous visitor ID
-    },
     account: {
       id: 'SLUGWORTH-CORP-ACCOUNT',
       name: 'Slugworth Corporation'
