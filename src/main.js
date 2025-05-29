@@ -5,10 +5,10 @@ import './assets/main.css'
 
 // Make sure pendo is available before initializing
 if (window.pendo) {
-  // Initialize Pendo
+  // Initialize Pendo without providing a visitor ID to allow for anonymous tracking
   window.pendo.initialize({
     visitor: {
-      id: 'VISITOR-UNIQUE-ID-' + Math.floor(Math.random() * 1000000) // Generate a random visitor ID for testing
+      // Let Pendo generate the anonymous visitor ID
     },
     account: {
       id: 'SLUGWORTH-CORP-ACCOUNT',
